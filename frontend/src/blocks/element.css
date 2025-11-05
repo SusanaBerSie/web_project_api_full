@@ -1,0 +1,63 @@
+.element {
+  width: 282px;
+  border-radius: 2%;
+}
+
+.element__image {
+  width: 100%;
+  border-radius: 4% 4% 0% 0%;
+  height: 282px;
+}
+
+.element__image-box {
+  width: 100%;
+  position: relative;
+}
+
+.element-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 25px 15px 31px 21px;
+  align-items: baseline;
+  border-radius: 0% 0% 4% 4%;
+}
+
+.element__title {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  color: #000;
+  margin: 0px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.element__icon-like {
+  width: 21px;
+  height: 19px;
+}
+
+.element__icon-trash {
+  background-image: url(../images/trash.png);
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.element__icon-trash:hover {
+  /* background-image: url(../images/trash_hover.png); */
+  opacity: 0.6;
+}
+
+.element__icon-like_active {
+  background-image: url(../images/black_heart.png);
+}
+
+.element__icon-like:hover {
+  background-image: url(../images/heart_hover.png);
+}

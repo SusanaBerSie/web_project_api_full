@@ -1,0 +1,179 @@
+.header {
+  width: 880px;
+  border-bottom: solid 1px;
+  color: #545454;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  width: 173px;
+  height: 33px;
+  padding: 45px 0px 41px;
+}
+
+.header__link {
+  height: 22px;
+  color: white;
+  text-decoration: none;
+  align-self: center;
+  font-size: 18px;
+  font-weight: 400;
+  transition: opacity 0.3s;
+}
+
+.header__link:hover {
+  opacity: 0.6;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__user-info {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header__email {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.header__logout {
+  background: transparent;
+  border: none;
+  color: #a9a9a9;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.header__logout:hover {
+  opacity: 0.6;
+}
+
+.header__hamburguer-icon {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.header__mobile-menu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 40px 0 40px;
+  border-bottom: solid 1px #545454;
+  width: 100%;
+}
+
+.header__mobile-email {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.header__mobile-logout {
+  background: transparent;
+  border: none;
+  color: #a9a9a9;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.header__mobile-logout:hover {
+  opacity: 0.6;
+}
+
+@media screen and (min-width: 544px) {
+  .header__hamburguer-container {
+    display: none;
+  }
+}
+@media screen and (max-width: 880px) and (min-width: 544px) {
+  .header {
+    width: 584px;
+  }
+  .header__logo {
+    width: 150px;
+    height: 30px;
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .header {
+    width: 100%;
+    padding: 0 27px;
+    box-sizing: border-box;
+  }
+  .header__logo {
+    width: 126px;
+    height: 24px;
+  }
+
+  .header__hamburguer-menu {
+    display: block;
+  }
+
+  .header__hamburguer-icon {
+    display: block;
+  }
+
+  .header__hamburguer-icon:hover {
+    opacity: 0.6;
+  }
+
+  .header__user-info {
+    display: none;
+  }
+
+  .header__mobile-menu {
+    width: 100%;
+  }
+
+  .header__hamburguer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    border-bottom: solid 1px;
+    color: #545454;
+  }
+  .header__hamburguer-email {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header__hamburguer-logout {
+    background: transparent;
+    border: none;
+    color: #a9a9a9;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 18px 102px 18px;
+  }
+  .header__hamburguer-logout:hover {
+    opacity: 0.6;
+  }
+}

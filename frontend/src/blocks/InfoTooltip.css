@@ -1,0 +1,98 @@
+.toolTip {
+  position: fixed;
+  /*visibility: hidden;
+  opacity: 0;*/
+  transition: 500ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+.popup__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100vh;
+}
+
+.popup__X-button {
+  color: white;
+  margin-left: 100%;
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+}
+
+.toolTip__container {
+  width: 430px;
+  background-color: white;
+  border-radius: 2%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.toolTip__success-logo {
+  width: 120px;
+  height: 120px;
+  align-self: center;
+  padding: 60px 155px 32px;
+}
+
+.toolTip__success-letter {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 100%;
+  color: black;
+  text-align: center;
+  padding: 0px 36px 60px;
+  margin: 0px;
+}
+
+@media screen and (max-width: 880px) and (min-width: 544px) {
+  .toolTip__container {
+    width: 100%;
+    max-width: 358px;
+  }
+
+  .popup__X-button {
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .toolTip {
+    width: 90%;
+  }
+
+  .popup__X-button {
+    color: white;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+
+  .toolTip__container {
+    max-width: 282px;
+  }
+
+  .toolTip__title {
+    width: 330px;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 25px 22px 76px 22px;
+    margin: 0px;
+  }
+}

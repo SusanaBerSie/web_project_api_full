@@ -1,0 +1,260 @@
+.popup {
+  position: fixed;
+  transition: 500ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+.popup__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100vh;
+}
+
+.popup--show {
+  pointer-events: auto;
+}
+
+.popup__X-button {
+  color: white;
+  margin-left: 100%;
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  font-size: 30px;
+  background-color: transparent;
+}
+
+.popup__X-button:hover {
+  opacity: 0.6;
+}
+
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup__container {
+  width: 430px;
+  background-color: white;
+  border-radius: 2%;
+  z-index: 1;
+}
+
+.popup__title {
+  width: 330px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  color: black;
+  padding: 34px 64px 54px 36px;
+  margin: 0px;
+}
+
+.popup__fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0px 35px 48px 34px;
+  margin: 0px;
+}
+
+.popup__input {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  border: none;
+  border-bottom: solid 1px #c4c4c4;
+  padding-bottom: 13px;
+  width: 358px;
+  height: 27px;
+}
+
+.popup__input::placeholder {
+  color: #c4c4c4;
+}
+
+.popup__button {
+  border: none;
+  margin: 0px;
+  padding: 0px 36px 36px;
+}
+
+.popup__button-item {
+  width: 358px;
+  height: 50px;
+  border: solid 1px #c4c4c4;
+  padding: 0px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0px;
+  color: #c4c4c4;
+  background-color: black;
+  cursor: pointer;
+}
+
+.popup__photo {
+  width: 100%;
+  max-height: 60vh;
+}
+
+.popup__photo-title {
+  z-index: 1;
+  position: relative;
+}
+
+.popup__button-item:hover {
+  background-image: url(../images/popup-button_hover.jpg);
+}
+
+.popup__button-item_active {
+  background-color: white;
+}
+
+.popup__input_type_error {
+  border-bottom-color: solid 1px red;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  border: none;
+}
+
+.input__error {
+  color: red;
+  font-size: 12px;
+}
+
+.popup__error_visible {
+  display: block;
+}
+
+.popup__confirm-title {
+  padding: 34px 36px 38px;
+  width: 330px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  color: black;
+  margin: 0px;
+}
+
+.popup__confirm-button-item {
+  padding: 14px 124px;
+  width: 358px;
+  height: 50px;
+  border: solid 1px #c4c4c4;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0px 36px 36px;
+  color: #c4c4c4;
+  background-color: black;
+  cursor: pointer;
+}
+
+.popup__confirm-fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 36px 10px;
+  margin: 0px;
+}
+
+.switchPhotoProfile-title {
+  padding: 34px 64px 54px 36px;
+  width: 330px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  color: black;
+  margin: 0px;
+}
+
+@media screen and (max-width: 880px) and (min-width: 544px) {
+  .popup__container {
+    width: 100%;
+    max-width: 358px;
+  }
+
+  .popup__input {
+    width: 100%;
+    max-width: 358px;
+  }
+
+  .popup__X-button {
+    margin-right: auto;
+  }
+
+  .popup__button {
+    max-width: 330px;
+    margin: 0 auto;
+  }
+
+  .popup__button-item {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .popup {
+    top: 123px;
+    width: 90%;
+  }
+
+  .popup__X-button {
+    color: white;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    display: block;
+  }
+
+  .popup__container {
+    max-width: 282px;
+  }
+
+  .popup__title {
+    width: 330px;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 25px 22px 76px 22px;
+    margin: 0px;
+  }
+
+  .popup__fieldset {
+    padding: 0px 22px 46px 22px;
+  }
+
+  .popup__input {
+    color: black;
+    padding-bottom: 13px;
+    width: 238px;
+    height: 17px;
+  }
+
+  .popup__button {
+    width: 238px;
+    height: 46px;
+    padding: 0px 22px 25px;
+  }
+
+  .popup__button-item {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: white;
+  }
+}
