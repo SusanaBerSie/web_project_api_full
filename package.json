@@ -2,6 +2,7 @@
   "dependencies": {
     "bcrypt": "^6.0.0",
     "celebrate": "^15.0.3",
+    "express-winston": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
     "winston": "^3.18.3"
   }
