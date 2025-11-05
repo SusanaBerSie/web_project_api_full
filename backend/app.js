@@ -17,7 +17,7 @@ const { requestLogger, errorLogger } = require("./middleware/logger");
 mongoose.connect("mongodb://localhost:27017/aroundb");
 
 app.use(express.json());
-app.use(requestLogger);
+app.use(requestLogger());
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
