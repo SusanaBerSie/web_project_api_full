@@ -84,6 +84,7 @@ function App() {
       document.removeEventListener("keydown", handleEscapeKey);
     };
   },[]); */
+  localStorage.setItem("token", "su");
 
   const handleLogin = async ({ email, password }) => {
     if (!email || !password) {
@@ -92,6 +93,7 @@ function App() {
     try {
       const data = await auth.loginUser(email, password);
       if (data.token) {
+        console.log(data.token);
         localStorage.setItem("token", data.token);
         setIsLoggedIn(true);
         setCurrentUser(data.user || {});

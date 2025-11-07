@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 app.use(express.json());
 const usersRouter = require("./routes/users");
@@ -13,7 +13,7 @@ const {
   validateSignUp,
 } = require("./middleware/validation");
 const { requestLogger, errorLogger } = require("./middleware/logger");
-var cors = require("cors");
+const cors = require("cors");
 
 mongoose.connect("mongodb://127.0.0.1:27017/aroundb").then(() => {
   console.log("Base de datos conectada");
@@ -22,7 +22,6 @@ mongoose.connect("mongodb://127.0.0.1:27017/aroundb").then(() => {
 app.use(express.json());
 app.use(requestLogger);
 app.use(cors());
-app.options("*", cors());
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
