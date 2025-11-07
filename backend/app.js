@@ -13,6 +13,7 @@ const {
   validateSignUp,
 } = require("./middleware/validation");
 const { requestLogger, errorLogger } = require("./middleware/logger");
+var cors = require("cors");
 
 mongoose.connect("mongodb://127.0.0.1:27017/aroundb").then(() => {
   console.log("Base de datos conectada");
@@ -20,6 +21,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/aroundb").then(() => {
 
 app.use(express.json());
 app.use(requestLogger);
+app.use(cors());
+app.options("*", cors());
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
