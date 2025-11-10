@@ -19,9 +19,20 @@ mongoose.connect("mongodb://127.0.0.1:27017/aroundb").then(() => {
   console.log("Base de datos conectada");
 });
 
+const allowedOrigins = [
+  "http://apptravel.chickenkiller.com",
+  "https://apptravel.chickenkiller.com",
+  "http://api.apptravel.chickenkiller.com",
+  "https://api.apptravel.chickenkiller.com",
+  "http://www.apptravel.chickenkiller.com",
+  "https://www.apptravel.chickenkiller.com",
+  "http://www.api.apptravel.chickenkiller.com",
+  "https://www.api.apptravel.chickenkiller.com",
+];
+
 app.use(express.json());
 app.use(requestLogger);
-app.use(cors());
+app.use(cors({ origin: allowedOrigins }));
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
