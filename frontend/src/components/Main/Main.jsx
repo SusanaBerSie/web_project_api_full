@@ -57,7 +57,7 @@ export default function Main(props) {
         ></button>
       </section>
       <section className="elements">
-        {props &&
+        {props.cards &&
           props.cards.map((card) => (
             <Card
               key={card._id}

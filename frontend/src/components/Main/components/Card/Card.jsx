@@ -1,13 +1,20 @@
 import likeIcon from "../../../../images/heart.png";
 import trashIcon from "../../../../images/trash.png";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../../../contexts/CurrentUserContext";
 
 export default function Card(props) {
-  const { name, link, isLiked } = props.card;
+  const { currentUser } = useContext(CurrentUserContext);
+  const { name, link, likes = [], owner } = props.card;
   const { handleOpenPopup, onCardLike, onCardDelete } = props;
+
+  const isLiked = likes.some((userId) => userId === currentUser._id);
+  const isOwner = owner === currentUser._id;
 
   const cardLikeButtonClassName = `element__icon-like ${
     isLiked ? "element__icon-like_active" : ""
   }`;
+
   function handleLikeClick() {
     onCardLike(props.card);
   }
@@ -27,12 +34,14 @@ export default function Card(props) {
             handleOpenPopup(null, name, link);
           }}
         />
-        <img
-          src={trashIcon}
-          alt="trash"
-          className="element__icon-trash"
-          onClick={handleDeleteClick}
-        />
+        {isOwner && (
+          <img
+            src={trashIcon}
+            alt="trash"
+            className="element__icon-trash"
+            onClick={handleDeleteClick}
+          />
+        )}
       </div>
       <div className="element-box">
         <h2 className="element__title">{name}</h2>

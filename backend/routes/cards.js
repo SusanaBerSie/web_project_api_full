@@ -29,9 +29,16 @@ router.delete(
   validateDeleteCard,
   deleteCardById
 );
-router.put("/:cardId/likes", validateCardId, validateCardLike, likeCard);
+router.put(
+  "/:cardId/likes",
+  webToken,
+  validateCardId,
+  validateCardLike,
+  likeCard
+);
 router.delete(
   "/:cardId/likes",
+  webToken,
   validateCardId,
   validateCardDislike,
   deslikeCard

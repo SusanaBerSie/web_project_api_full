@@ -1,28 +1,32 @@
 class Api {
   constructor(apiConfig) {
     this.url = apiConfig.baseUrl;
-    this.token = apiConfig.headers.authorization;
   }
 
   getUserInfo() {
     return fetch(this.url + "users/me", {
       method: "GET",
       headers: {
-        authorization: this.token,
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .then((data) => {
+        return data.data || data;
+      });
   }
 
   editProfile(userName, userAbout) {
     return fetch(this.url + "users/me", {
       method: "PATCH",
       headers: {
-        authorization: this.token,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -41,55 +45,69 @@ class Api {
     return fetch(this.url + "cards/", {
       method: "GET",
       headers: {
-        authorization: this.token,
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .then((data) => {
+        return data.data || data;
+      });
   }
 
   addNewCard(name, link) {
     return fetch(this.url + "cards/", {
       method: "POST",
       headers: {
-        authorization: this.token,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name: name,
         link: link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .then((data) => {
+        return data.data || data;
+      });
   }
 
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(this.url + "cards/" + cardId + "/likes", {
       method: isLiked ? "DELETE" : "PUT",
       headers: {
-        authorization: this.token,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .then((data) => {
+        return data.card || data.data || data;
+      });
   }
 
   deleteCard(cardId) {
     return fetch(this.url + "cards/" + cardId, {
       method: "DELETE",
       headers: {
-        authorization: this.token,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
       },
     }).then((res) => {
       if (res.ok) {
@@ -103,7 +121,7 @@ class Api {
     return fetch(this.url + "users/me/avatar", {
       method: "PATCH",
       headers: {
-        authorization: this.token,
+        authorization: `Bearer ${localStorage.getItem("token")}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -121,8 +139,8 @@ class Api {
 export const api = new Api({
   baseUrl: "http://localhost:3001/",
   /*  baseUrl: "https://api.apptravel.chickenkiller.com", */
-  headers: {
+  /*   headers: {
     authorization: "55fccc8a-cf9c-4f13-a85d-ecd74e12c690",
     "Content-Type": "application/json",
-  },
+  }, */
 });

@@ -51,13 +51,14 @@
 }
 
 .popup__title {
-  width: 330px;
+  width: 100%;
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;
   color: black;
-  padding: 34px 64px 54px 36px;
+  padding: 34px 64px 30px 36px;
   margin: 0px;
+  box-sizing: border-box;
 }
 
 .popup__fieldset {
@@ -209,7 +210,6 @@
 
 @media screen and (max-width: 544px) {
   .popup {
-    top: 123px;
     width: 90%;
   }
 
@@ -226,11 +226,12 @@
   }
 
   .popup__title {
-    width: 330px;
+    width: 100%;
     font-size: 18px;
     line-height: 22px;
-    padding: 25px 22px 76px 22px;
+    padding: 25px 22px 30px 22px;
     margin: 0px;
+    box-sizing: border-box;
   }
 
   .popup__fieldset {
@@ -255,6 +256,5 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
-    background-color: white;
   }
 }

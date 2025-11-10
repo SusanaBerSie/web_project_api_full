@@ -34,7 +34,7 @@ async function newCard(req, res, next) {
   }
 }
 
-async function deleteCardById(req, res) {
+async function deleteCardById(req, res, next) {
   //REVISAR ERROR
   try {
     const { cardId } = req.params;
@@ -66,7 +66,7 @@ async function deleteCardById(req, res) {
   }
 }
 
-async function likeCard(req, res) {
+async function likeCard(req, res, next) {
   try {
     const { _id } = req.user;
     const { cardId } = req.params;
@@ -83,7 +83,7 @@ async function likeCard(req, res) {
   }
 }
 
-async function deslikeCard(req, res) {
+async function deslikeCard(req, res, next) {
   try {
     const { _id } = req.user;
     const { cardId } = req.params;

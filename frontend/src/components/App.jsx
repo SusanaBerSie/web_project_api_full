@@ -39,7 +39,7 @@ function App() {
         .checkToken(token)
         .then((res) => {
           setIsLoggedIn(true);
-          setCurrentUser({ ...currentUser, email: res.data.email });
+          setCurrentUser({ ...currentUser, email: res.user.email });
           navigate("/");
         })
         .catch(() => {
@@ -51,40 +51,35 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      api.getUserInfo().then((res) => {
-        setCurrentUser({
-          ...currentUser,
-          name: res.name,
-          about: res.about,
-          _id: res._id,
-          avatar: res.avatar,
+      api
+        .getUserInfo()
+        .then((res) => {
+          const userData = res.user || res;
+          setCurrentUser((prev) => ({
+            ...prev,
+            name: res.user.name,
+            about: res.user.about,
+            _id: res.user._id,
+            avatar: res.user.avatar,
+          }));
+          console.log("usuario info", res);
+        })
+        .catch((error) => {
+          console.error("Error al cargar información del usuario:", error);
         });
-        console.log(res);
-      });
+
       api
         .getInitialCards()
         .then((res) => {
-          console.log(res);
-          setCards(res);
+          console.log("Tarjetas cargadas:", res);
+          setCards(Array.isArray(res) ? res : []);
         })
         .catch((error) => {
-          console.error("Error al cargar las tarjetas:", error);
+          console.log("Error al cargar las tarjetas:", error);
+          setCards([]);
         });
     }
   }, [isLoggedIn]);
-
-  /*  useEffect(() => {
-    const handleEscapeKey = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-    document.addEventListener("keydown", handleEscapeKey);
-    return () => {
-      document.removeEventListener("keydown", handleEscapeKey);
-    };
-  },[]); */
-  localStorage.setItem("token", "su");
 
   const handleLogin = async ({ email, password }) => {
     if (!email || !password) {
@@ -150,31 +145,33 @@ function App() {
   };
 
   const handleUpdateAvatar = async function (avatar) {
-    await api
-      .switchPhotoProfile(avatar)
-      .then((res) => {
-        setCurrentUser(res);
-        handleClosePopup();
-      })
-      .catch((error) => {
-        console.error("Error al actualizar foto de perfil:", error);
-      });
+    try {
+      const res = await api.switchPhotoProfile(avatar);
+      const userData = res.user || res;
+      setCurrentUser((prev) => ({
+        ...prev,
+        ...userData,
+      }));
+      handleClosePopup();
+    } catch (error) {
+      console.error("Error al actualizar foto de perfil:", error);
+    }
   };
 
   async function handleUpdateUser(name, description) {
-    await api
-      .editProfile(name, description)
-      .then((res) => {
-        setCurrentUser(res);
-        handleClosePopup();
-      })
-      .catch((error) => {
-        console.error("Error al actualizar el perfil:", error);
-      });
+    try {
+      const res = await api.editProfile(name, description);
+      const userData = res.user || res;
+      setCurrentUser(userData);
+      handleClosePopup();
+    } catch (error) {
+      console.error("Error al actualizar el perfil:", error);
+    }
   }
 
   async function handleCardLike(card) {
-    const isLiked = card.isLiked;
+    const isLiked =
+      card.likes && card.likes.some((userId) => userId === currentUser._id);
     await api
       .changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
