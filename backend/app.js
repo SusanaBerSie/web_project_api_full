@@ -34,7 +34,14 @@ const allowedOrigins = [
 
 app.use(express.json());
 app.use(requestLogger);
-app.use(cors({ origin: allowedOrigins }));
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
