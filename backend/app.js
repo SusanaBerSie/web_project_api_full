@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const { PORT = 3001 } = process.env;
 const app = express();
-app.use(express.json());
 const usersRouter = require("./routes/users");
 const cardsRouter = require("./routes/cards");
 const mongoose = require("mongoose");
@@ -44,7 +43,7 @@ const corsOptions = {
   },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "authorization"],
   optionsSuccessStatus: 200,
 };
 
