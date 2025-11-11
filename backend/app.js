@@ -28,6 +28,8 @@ const allowedOrigins = [
   "https://www.apptravel.chickenkiller.com",
   "http://www.api.apptravel.chickenkiller.com",
   "https://www.api.apptravel.chickenkiller.com",
+  "http://localhost:3000/",
+  "https://localhost:3000/",
 ];
 
 app.use(express.json());
