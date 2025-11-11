@@ -43,11 +43,14 @@ const corsOptions = {
     }
   },
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200,
 };
 
 app.use(express.json());
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(requestLogger);
 
 app.use("/users", usersRouter);
