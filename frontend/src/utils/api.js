@@ -137,8 +137,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "http://localhost:3001",
-  /* baseUrl: "http://api.apptravel.chickenkiller.com", */
+  baseUrl: "http://api.apptravel.chickenkiller.com",
   /*  headers: {
     authorization: "55fccc8a-cf9c-4f13-a85d-ecd74e12c690",
     "Content-Type": "application/json",
