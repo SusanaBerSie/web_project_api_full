@@ -71,19 +71,19 @@ const validateCardId = celebrate({
 
 const validateDeleteCard = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().hex().length(24),
+    cardId: Joi.string().required().hex().length(24),
   }),
 });
 
 const validateCardLike = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().hex().length(24),
+    cardId: Joi.string().required().hex().length(24),
   }),
 });
 
 const validateCardDislike = celebrate({
   params: Joi.object().keys({
-    cardId: Joi.string().hex().length(24),
+    cardId: Joi.string().required().hex().length(24),
   }),
 });
 

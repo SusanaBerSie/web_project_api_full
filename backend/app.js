@@ -13,6 +13,7 @@ const {
 } = require("./middleware/validation");
 const { requestLogger, errorLogger } = require("./middleware/logger");
 const cors = require("cors");
+const { errors } = require("celebrate");
 
 mongoose.connect("mongodb://127.0.0.1:27017/aroundb").then(() => {
   console.log("Base de datos conectada");
@@ -58,6 +59,7 @@ app.post("/signin", validateSignIn, login);
 app.post("/signup", validateUserBody, validateSignUp, createUser);
 
 app.use(errorLogger);
+//app.use(errors());
 
 app.use((err, req, res, next) => {
   res

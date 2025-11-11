@@ -20,7 +20,7 @@ const {
   validateCardDislike,
 } = require("../middleware/validation");
 
-router.get("/", validateCardId, getCards);
+router.get("/", getCards);
 router.post("/", webToken, validateNewCard, newCard);
 router.delete(
   "/:cardId",
