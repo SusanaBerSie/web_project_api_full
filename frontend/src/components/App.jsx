@@ -87,7 +87,7 @@ function App() {
     }
     try {
       const data = await auth.loginUser(email, password);
-      if (data.token) {
+      if (data?.token) {
         console.log(data.token);
         localStorage.setItem("token", data.token);
         setIsLoggedIn(true);

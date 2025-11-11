@@ -28,20 +28,27 @@ const allowedOrigins = [
   "https://www.apptravel.chickenkiller.com",
   "http://www.api.apptravel.chickenkiller.com",
   "https://www.api.apptravel.chickenkiller.com",
-  "http://localhost:3000/",
-  "https://localhost:3000/",
+  "http://localhost:3000",
+  "https://localhost:3000",
 ];
 
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("No permitido por CORS: " + origin));
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use(requestLogger);
-app.use(
-  cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);

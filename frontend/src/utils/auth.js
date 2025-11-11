@@ -17,12 +17,12 @@ export async function loginUser(email, password) {
       console.error("Error al cargar el usuario:", error);
       switch (error.status) {
         case 400:
-          res.status(400).json({
+          console.log({
             message: "No se ha proporcionado uno o más campos",
           });
           break;
         case 401:
-          res.status(401).json({
+          console.log({
             message:
               "No se ha encontrado al usuario con el correo electrónico especificado",
           });
@@ -47,9 +47,6 @@ export async function registerUser(email, password) {
     })
     .catch((error) => {
       console.error("Error al registrar el usuario:", error);
-      res.status(400).json({
-        message: "Uno de los campos se rellenó de forma incorrecta",
-      });
     });
 }
 
@@ -70,13 +67,13 @@ export async function checkToken(token) {
       console.error("Error al cargar el usuario:", error);
       switch (error.status) {
         case 400:
-          res.status(400).json({
+          console.log({
             message:
               "Token no proporcionado o proporcionado en el formato incorrecto",
           });
           break;
         case 401:
-          res.status(401).json({
+          console.log({
             message: "El token provisto es inválido",
           });
           break;
