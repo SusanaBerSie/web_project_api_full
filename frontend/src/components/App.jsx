@@ -39,7 +39,7 @@ function App() {
         .checkToken(token)
         .then((res) => {
           setIsLoggedIn(true);
-          setCurrentUser({ ...currentUser, email: res.user.email });
+          setCurrentUser({ ...currentUser, email: res.data.email });
           navigate("/");
         })
         .catch(() => {
@@ -57,10 +57,10 @@ function App() {
           const userData = res.user || res;
           setCurrentUser((prev) => ({
             ...prev,
-            name: res.user.name,
-            about: res.user.about,
-            _id: res.user._id,
-            avatar: res.user.avatar,
+            name: userData.name,
+            about: userData.about,
+            _id: userData._id,
+            avatar: userData.avatar,
           }));
           console.log("usuario info", res);
         })
@@ -91,8 +91,6 @@ function App() {
         console.log(data.token);
         localStorage.setItem("token", data.token);
         setIsLoggedIn(true);
-        setCurrentUser(data.user || {});
-        navigate("/");
         setToolTip({
           isOpen: true,
           isSuccess: true,
@@ -100,6 +98,7 @@ function App() {
           logo: successLogo,
         });
         setToken(data.token);
+        navigate("/");
       }
     } catch (error) {
       console.error("Error en login", error);

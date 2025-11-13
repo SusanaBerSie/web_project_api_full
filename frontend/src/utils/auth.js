@@ -1,6 +1,7 @@
-const BASE_URL = "http://api.apptravel.chickenkiller.com";
+/* const BASE_URL = "http://api.apptravel.chickenkiller.com"; */
+const BASE_URL = "http://localhost:3001/";
 export async function loginUser(email, password) {
-  return fetch(BASE_URL + "/signin", {
+  return fetch(BASE_URL + "signin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -32,7 +33,7 @@ export async function loginUser(email, password) {
 }
 
 export async function registerUser(email, password) {
-  return fetch(BASE_URL + "/signup", {
+  return fetch(BASE_URL + "signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -51,7 +52,7 @@ export async function registerUser(email, password) {
 }
 
 export async function checkToken(token) {
-  return fetch(BASE_URL + "/users/me", {
+  return fetch(BASE_URL + "users/me", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
