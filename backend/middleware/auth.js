@@ -1,3 +1,5 @@
+require("dotenv").config();
+const { JWT_SECRET = "Clave secreta" } = process.env;
 const jwt = require("jsonwebtoken");
 
 const webToken = (req, res, next) => {
@@ -10,7 +12,7 @@ const webToken = (req, res, next) => {
 
   let payload;
   try {
-    payload = jwt.verify(token, "Clave secreta");
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     return res.status(403).send({ message: "Requiere autorización" });
   }
