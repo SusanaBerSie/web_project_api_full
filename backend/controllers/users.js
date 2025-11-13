@@ -1,5 +1,3 @@
-require("dotenv").config();
-const { JWT_SECRET = "Clave secreta" } = process.env;
 const user = require("../models/user");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
@@ -134,7 +132,7 @@ async function login(req, res) {
       return user;
     })
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+      const token = jwt.sign({ _id: user._id }, "Clave secreta", {
         expiresIn: "7d",
       });
       res.send({ token });

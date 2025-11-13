@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-require("dotenv").config();
 const { PORT = 3001 } = process.env;
 const app = express();
 const usersRouter = require("./routes/users");
@@ -54,12 +53,6 @@ app.use(cors());
 //app.use(cors(corsOptions));
 //app.options("*", cors(corsOptions));
 app.use(requestLogger);
-
-app.get("/crash-test", () => {
-  setTimeout(() => {
-    throw new Error("El servidor va a caer");
-  }, 0);
-});
 
 app.use("/users", usersRouter);
 app.use("/cards", cardsRouter);
