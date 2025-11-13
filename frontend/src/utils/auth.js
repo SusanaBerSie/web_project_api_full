@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.apptravel.chickenkiller.com";
+const BASE_URL = "https://api.apptravel.chickenkiller.com/";
 //const BASE_URL = "http://localhost:3001/";
 export async function loginUser(email, password) {
   return fetch(BASE_URL + "signin", {
